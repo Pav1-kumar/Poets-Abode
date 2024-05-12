@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
 
+import { Helmet } from 'react-helmet';
+
 // pages & components
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -14,6 +16,9 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>Poet's Abode</title>
+      </Helmet>
       <BrowserRouter>
         <Header />
         <div className="pages">

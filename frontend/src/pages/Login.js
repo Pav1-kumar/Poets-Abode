@@ -1,23 +1,17 @@
 import { useState } from "react"
 import { useLogin } from "../hooks/useLogin"
 
-import axios from 'axios'
-
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const {login, error, isLoading} = useLogin()
 
-  axios.defaults.withCredentials = true;
-
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    axios.post('https://poets-abode-backend.vercel.app/login', { email,password } )
-    .then(result => console.log(result))
-    .catch(err => console.log(err))
     await login(email, password)
   }
+
 
   return (
     <form className="login" onSubmit={handleSubmit}>

@@ -4,26 +4,25 @@ const express = require('express')
 const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workouts')
 const userRoutes = require('./routes/user')
+const cors = require("cors")
 
-const cors = require('cors')
 
 // express app
 const app = express()
 
-app.use(cors(
-  {
-    origin: [""],
-    methods: ["POST", "GET"],
-    credentials: true
-  }
-));
-
-
 // middleware
 app.use(express.json())
 
+app.use(cors({
+  origin: [process.env.FRONTEND_URL], //allow request only from these site
+  methods: ["GET","POST","PUT","DELETE"],
+  credentials: true, //for getting cookies and other headers from backend
+  samesite : "none",
+  secure: true,
+}))
+
 app.use((req, res, next) => {
-  console.log(req.path, req.method)
+  console.log(req.path, res.method)
   next()
 })
 

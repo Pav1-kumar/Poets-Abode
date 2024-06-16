@@ -28,7 +28,7 @@ const WorkoutDetails = ({ workout }) => {
 
   return (
    
-    <ul class="admin-posts">
+    <ul className="admin-posts">
      <li>
       <div className="admin-post-controls">
       <h3 className='list'>{workout.title} <span className="btn-delete btn" onClick={handleClick}>delete</span> </h3>
